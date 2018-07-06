@@ -80,14 +80,14 @@ leftBarPos    = "0"
 rightBarPos   = leftBarSize
 barHeight     = "26"
 
-wsBar      = 
+wsBar      =
   "dzen2 -dock -ta l      \
   \ -w '" ++ leftBarSize ++ "'  \
   \ -h '" ++ barHeight ++ "' \
   \ -x '" ++ leftBarPos ++ "'  \
   \ -fn '" ++ font ++ "'"
 
-statsPanel      = 
+statsPanel      =
   "dzen2 -dock -ta r      \
   \ -w '" ++ rightBarSize ++ "'  \
   \ -h '" ++ barHeight ++ "' \
@@ -143,12 +143,12 @@ myWorkspaces = ws $ ["TERM", "INET", "DEV", "ENT", "PLAY", "TOOL"]
 
 -- Layout Hook {{{
 myLayoutHook =
-  avoidStruts 
+  avoidStruts
   $ smartBorders
   $ mkToggle (NOBORDERS ?? FULL ?? EOT)
   $ standardLayout
   where
-    standardLayout = 
+    standardLayout =
       renamed [CutWordsLeft 2] $
       smartSpacingWithEdge 8 $ layoutHook defaultConfig
 -- }}}
@@ -169,7 +169,7 @@ myManageHook =
   ]
   where
     w = workspaces'
-    isRole = stringProperty "WM_WINDOW_ROLE" =? "popup"
+    isRole = stringProperty "WM_WINDOW_ROLE" =? "pop-up"
     inetApp = ["Chromium"]
     devApp =
       [ "SecureCRT", "GNS3", "VirtualBox Manager"
@@ -209,11 +209,13 @@ myKeys =
   , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -10")
   , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +10")
   , ((0, xK_Print), spawn "maim -s | xclip -selection clipboard -t image/png")
+  , ((s, xK_Print), spawn "maim | xclip -selection clipboard -t image/png")
   ]
   where
     m = modm
     s = shiftMask
-    dmenu = 
+    c = controlMask
+    dmenu =
       "dmenu_run -i \
       \ -fn '" ++ fn ++ "' \
       \ -w '" ++ w ++ "' \
@@ -227,5 +229,5 @@ myKeys =
         h = "26"
         fn = font
         nb = bgColor
-        sb = "#9D3E58"
+        sb = layoutColor
 -- }}}
