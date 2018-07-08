@@ -70,6 +70,8 @@ bgColor       = "#383644"
 fgColor       = "#FCEBDB"
 wsBgColor     = "#B79288"
 wsFgColor     = "#FFFFFF"
+barBgColor    = "#383644"
+barFgColor    = "#E2DED4"
 hintColor     = "#AA3355"
 layoutColor   = "#9D3E58"
 
@@ -82,17 +84,21 @@ barHeight     = "26"
 
 wsBar      =
   "dzen2 -dock -ta l      \
-  \ -w '" ++ leftBarSize ++ "'  \
-  \ -h '" ++ barHeight ++ "' \
-  \ -x '" ++ leftBarPos ++ "'  \
-  \ -fn '" ++ font ++ "'"
+  \ -bg '" ++ barBgColor  ++ "' \
+  \ -fg '" ++ barFgColor  ++ "' \
+  \ -w  '" ++ leftBarSize ++ "' \
+  \ -h  '" ++ barHeight   ++ "' \
+  \ -x  '" ++ leftBarPos  ++ "' \
+  \ -fn '" ++ font        ++ "' "
 
 statsPanel      =
   "dzen2 -dock -ta r      \
-  \ -w '" ++ rightBarSize ++ "'  \
-  \ -h '" ++ barHeight ++ "' \
-  \ -x '" ++ rightBarPos ++ "'  \
-  \ -fn '" ++ font ++ "'"
+  \ -bg '" ++ barBgColor   ++ "'\
+  \ -fg '" ++ barFgColor   ++ "'\
+  \ -w  '" ++ rightBarSize ++ "'\
+  \ -h  '" ++ barHeight    ++ "'\
+  \ -x  '" ++ rightBarPos  ++ "'\
+  \ -fn '" ++ font         ++ "'"
 
 statusConfig  = "conky -c ~/.xmonad/status.conf"
 statsBar      = statusConfig ++ " | " ++ statsPanel
