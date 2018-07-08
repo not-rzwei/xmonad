@@ -162,7 +162,7 @@ myLayoutHook =
     termLayout =
       gaps [(L,30), (U,30), (R,30), (D,30)] $
       standardLayout
-    webLayout = Full
+    webLayout = Full ||| Tall (1) (3/100) (1/2)
     standardLayout =
       renamed [CutWordsLeft 2] $
       smartSpacingWithEdge 8 $ layoutHook defaultConfig
