@@ -191,7 +191,7 @@ myManageHook =
 
 -- Startup Hook {{{
 myStartupHook = do
-  spawnOnce "./.fehbg"
+  spawnOnce "feh --bg-fill ~/.xmonad/background.png"
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "setxkbmap -option 'altwin:swap_alt_win'"
   spawnOnce "compton --config /dev/null -bGC"
