@@ -13,6 +13,7 @@ import XMonad.Util.Run (spawnPipe, safeSpawn)
 import XMonad.Util.SpawnOnce (spawnOnce)
 
 import XMonad.Layout
+import XMonad.Layout.Gaps
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
@@ -64,6 +65,7 @@ bdrFocus      = fgColor
 font          = "Misc Termsyn.Icons:size=13"
 monitorSize   = 1366
 monitor n     = show(round(monitorSize * n))
+monitor' n    = round(monitorSize * n)
 
 ----- WHAT COLOR?
 bgColor       = "#383644"
@@ -152,8 +154,15 @@ myLayoutHook =
   avoidStruts
   $ smartBorders
   $ mkToggle (NOBORDERS ?? FULL ?? EOT)
+  $ onWorkspace (w !! 0) termLayout
+  $ onWorkspace (w !! 1) webLayout
   $ standardLayout
   where
+    w = workspaces'
+    termLayout =
+      gaps [(L,30), (U,30), (R,30), (D,30)] $
+      standardLayout
+    webLayout = Full
     standardLayout =
       renamed [CutWordsLeft 2] $
       smartSpacingWithEdge 8 $ layoutHook defaultConfig
@@ -208,7 +217,7 @@ myKeys =
   , ((m, xK_BackSpace), focusUrgent)
   , ((m, xK_equal), toggleWS)
   , ((m, xK_grave), toggleWS)
-  -- , ((m, xK_Caps_Lock), sendMessage $ Toggle FULL)
+  , ((m, xK_Caps_Lock), sendMessage $ Toggle FULL)
   , ((0, xF86XK_AudioLowerVolume), spawn "ponymix decrease 10")
   , ((0, xF86XK_AudioRaiseVolume), spawn "ponymix increase 10")
   , ((0, xF86XK_AudioMute), spawn "ponymix toggle")
@@ -231,7 +240,7 @@ myKeys =
       \ -sb '" ++ sb ++ "'"
       where
         w = monitor 0.3
-        x = monitor 0.7
+        x = show(monitor'(0.7) - 70)
         h = "26"
         fn = font
         nb = bgColor
