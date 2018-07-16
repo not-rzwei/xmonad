@@ -24,6 +24,7 @@ import XMonad.Layout.Renamed
 import Graphics.X11.ExtraTypes.XF86
 import System.IO
 import XMonad.Actions.CycleWS
+import XMonad.Actions.UpdatePointer
 -- }}}
 
 -- Main module {{{
@@ -45,7 +46,7 @@ main = do
 
       -- Lets hook up
       , handleEventHook     = eventHook
-      , logHook             = logHook' wsPanel
+      , logHook             = logHook' wsPanel >> updatePointer(0.5, 0.5)(0, 0)
       , layoutHook          = layoutHook'
       , manageHook          = manageHook'
       , startupHook         = startupHook'
