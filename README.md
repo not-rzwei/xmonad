@@ -8,7 +8,7 @@ Okay, there's a conky config tho...
 
 ### Sneek Peek
 ![image](https://user-images.githubusercontent.com/11663545/42296279-88650658-8026-11e8-9011-521b268a971b.png)
-~~Sorry for weeb background~~
+~~я люблю тебя SVD, SV-98~~ <-- Google translate
 
 ### Directory Structure
 
