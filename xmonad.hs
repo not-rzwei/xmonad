@@ -61,22 +61,22 @@ keyboard      = myKeys
 
 ----- Appearance
 bdrSize       = 5
-bdrNormal     = bgColor
-bdrFocus      = fgColor
+bdrNormal     = fgColor
+bdrFocus      = bgColor
 font          = "Misc Termsyn.Icons:size=13"
 monitorSize   = 1366
 monitor n     = show(round(monitorSize * n))
 monitor' n    = round(monitorSize * n)
 
 ----- WHAT COLOR?
-bgColor       = "#383644"
-fgColor       = "#FCEBDB"
-wsBgColor     = "#B79288"
-wsFgColor     = "#FFFFFF"
-barBgColor    = "#383644"
-barFgColor    = "#E2DED4"
-hintColor     = "#AA3355"
-layoutColor   = "#9D3E58"
+bgColor       = "#3d4142"
+fgColor       = "#c3bfc0"
+wsBgColor     = fgColor
+wsFgColor     = bgColor
+barBgColor    = bgColor
+barFgColor    = fgColor
+hintColor     = "#754e53"
+layoutColor   = "#14272e"
 
 ---- Panel
 leftBarSize   = monitor 0.7
@@ -122,10 +122,10 @@ myLogHook h =
     , ppCurrent = dzenColor (fg) (bg) . pad
     , ppVisible = pad
     , ppHidden  = pad
-    , ppUrgent  = dzenColor (fg) (hint) . pad
+    , ppUrgent  = dzenColor (bg) (hint) . pad
     , ppSep     = ""
     , ppOrder   = \(ws:l:t:_) -> [l, ws]
-    , ppLayout  = dzenColor (fg) (layoutBg) . pad . pad .
+    , ppLayout  = dzenColor (bg) (layoutBg) . pad . pad .
         ( \t -> case t of
           "Tall" -> "þ"
           "Mirror Tall" -> "ü"
