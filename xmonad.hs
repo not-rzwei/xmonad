@@ -164,6 +164,7 @@ myLayoutHook =
   where
     w = workspaces'
     termLayout =
+      renamed [CutWordsLeft 1] $
       gaps [(L,30), (U,30), (R,30), (D,30)] $
       withIM (6/11) (ClassName "URxvt") $
       standardLayout
