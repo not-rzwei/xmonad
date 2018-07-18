@@ -14,12 +14,16 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 
 import XMonad.Layout
 import XMonad.Layout.Gaps
-import XMonad.Layout.PerWorkspace
+import XMonad.Layout.IM
 import XMonad.Layout.NoBorders
+import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Spacing
+import XMonad.Layout.SimpleFloat
+import XMonad.Layout.Square
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Renamed
+import XMonad.Layout.TwoPane
 
 import Graphics.X11.ExtraTypes.XF86
 import System.IO
@@ -60,7 +64,7 @@ workspaces'   = myWorkspaces
 keyboard      = myKeys
 
 ----- Appearance
-bdrSize       = 5
+bdrSize       = 0
 bdrNormal     = fgColor
 bdrFocus      = bgColor
 font          = "Misc Termsyn.Icons:size=13"
@@ -153,7 +157,6 @@ myWorkspaces = ws $ ["TERM", "INET", "DEV", "ENT", "PLAY", "TOOL"]
 -- Layout Hook {{{
 myLayoutHook =
   avoidStruts
-  $ smartBorders
   $ mkToggle (NOBORDERS ?? FULL ?? EOT)
   $ onWorkspace (w !! 0) termLayout
   $ onWorkspace (w !! 1) webLayout
@@ -162,9 +165,11 @@ myLayoutHook =
     w = workspaces'
     termLayout =
       gaps [(L,30), (U,30), (R,30), (D,30)] $
+      withIM (6/11) (ClassName "URxvt") $
       standardLayout
     webLayout = Full ||| Tall (1) (3/100) (1/2)
     standardLayout =
+      smartBorders $
       renamed [CutWordsLeft 2] $
       smartSpacingWithEdge 8 $ layoutHook defaultConfig
 -- }}}
@@ -204,7 +209,9 @@ myStartupHook = do
   spawnOnce "feh --bg-fill ~/.xmonad/background.png"
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "setxkbmap -option 'altwin:swap_alt_win'"
-  spawnOnce "compton --config /dev/null -bGC"
+  spawnOnce "compton --config /dev/null -bGC \
+            \ --focus-exclude \"class_g = 'Dmenu'\" \
+            \ --inactive-dim 0.5 "
   spawnOnce "xclip"
 -- }}}
 
