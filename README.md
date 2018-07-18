@@ -7,7 +7,7 @@ In short, it's just xmonad configuration, no more, no less.
 Okay, there's a conky config tho...
 
 ### Sneek Peek
-![image](https://user-images.githubusercontent.com/11663545/42296279-88650658-8026-11e8-9011-521b268a971b.png)
+![image](https://user-images.githubusercontent.com/11663545/42872886-3fa236de-8aa8-11e8-946b-0f739b9e8664.png)
 ~~я люблю тебя SVD, SV-98~~ <-- Google translate
 
 ### Directory Structure
