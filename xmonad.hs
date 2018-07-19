@@ -226,7 +226,7 @@ myKeys =
   , ((m, xK_BackSpace), focusUrgent)
   , ((m, xK_equal), toggleWS)
   , ((m, xK_grave), toggleWS)
-  , ((m, xK_Caps_Lock), sendMessage $ Toggle FULL)
+  , ((m, xK_f), sendMessage $ Toggle FULL)
   , ((0, xF86XK_AudioLowerVolume), spawn "ponymix decrease 10")
   , ((0, xF86XK_AudioRaiseVolume), spawn "ponymix increase 10")
   , ((0, xF86XK_AudioMute), spawn "ponymix toggle")
