@@ -11,6 +11,7 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Run (spawnPipe, safeSpawn)
 import XMonad.Util.SpawnOnce (spawnOnce)
+import XMonad.Util.Scratchpad
 
 import XMonad.Layout
 import XMonad.Layout.Gaps
@@ -29,6 +30,7 @@ import Graphics.X11.ExtraTypes.XF86
 import System.IO
 import XMonad.Actions.CycleWS
 import XMonad.Actions.UpdatePointer
+import qualified XMonad.StackSet as W
 -- }}}
 
 -- Main module {{{
@@ -114,7 +116,7 @@ statsBar      = statusConfig ++ " | " ++ statsPanel
 eventHook     = fullscreenEventHook
 layoutHook'   = myLayoutHook
 logHook'      = myLogHook
-manageHook'   = myManageHook
+manageHook'   = myManageHook <+> manageScratchPad
 startupHook'  = myStartupHook
 -- }}}
 
@@ -204,6 +206,15 @@ myManageHook =
     ignoreApp = ["desktop", "desktop_window", "stalonetray", "trayer"]
 -- }}}
 
+-- Scratchpad {{{
+manageScratchPad :: ManageHook
+manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
+  where
+    h = 0.3
+    w = 1
+    t = 1 - h
+    l = 1 - w
+-- }}}
 
 -- Startup Hook {{{
 myStartupHook = do
@@ -212,7 +223,7 @@ myStartupHook = do
   spawnOnce "setxkbmap -option 'altwin:swap_alt_win'"
   spawnOnce "compton --config /dev/null -bGC \
             \ --focus-exclude \"class_g = 'Dmenu'\" \
-            \ --inactive-dim 0.5 "
+            \ --inactive-dim 0.3 "
   spawnOnce "xclip"
 -- }}}
 
@@ -226,6 +237,7 @@ myKeys =
   , ((m, xK_BackSpace), focusUrgent)
   , ((m, xK_equal), toggleWS)
   , ((m, xK_grave), toggleWS)
+  , ((m, xK_minus), scratchPad)
   , ((m, xK_f), sendMessage $ Toggle FULL)
   , ((0, xF86XK_AudioLowerVolume), spawn "ponymix decrease 10")
   , ((0, xF86XK_AudioRaiseVolume), spawn "ponymix increase 10")
@@ -254,4 +266,5 @@ myKeys =
         fn = font
         nb = bgColor
         sb = layoutColor
+    scratchPad = scratchpadSpawnActionTerminal term
 -- }}}
