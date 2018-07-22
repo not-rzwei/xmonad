@@ -127,7 +127,7 @@ myLogHook h =
     { ppOutput  = hPutStrLn h
     , ppCurrent = dzenColor (fg) (bg) . pad
     , ppVisible = pad
-    , ppHidden  = pad
+    , ppHidden  = pad . noScratchPad
     , ppUrgent  = dzenColor (bg) (hint) . pad
     , ppSep     = ""
     , ppOrder   = \(ws:l:t:_) -> [l, ws]
@@ -144,10 +144,11 @@ myLogHook h =
     fg = wsFgColor
     hint = hintColor
     layoutBg = layoutColor
+    noScratchPad ws = if ws == "NSP" then "" else ws
 -- }}}
 
 -- Workspaces {{{
-myWorkspaces = ws $ ["TERM", "INET", "DEV", "ENT", "PLAY", "TOOL"]
+myWorkspaces = ws $ ["TERM", "INET", "DEV", "ENT", "PLAY"]
   where
     ws l =
       [ "^ca(1,xdotool key super+" ++ show n ++ ")  " ++ ws ++ "  ^ca()"
