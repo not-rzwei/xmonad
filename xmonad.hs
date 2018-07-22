@@ -223,7 +223,7 @@ myStartupHook = do
   spawnOnce "setxkbmap -option 'altwin:swap_alt_win'"
   spawnOnce "compton --config /dev/null -bGC \
             \ --focus-exclude \"class_g = 'Dmenu'\" \
-            \ --inactive-dim 0.3 "
+            \ --inactive-dim 0.2 "
   spawnOnce "xclip"
 -- }}}
 
