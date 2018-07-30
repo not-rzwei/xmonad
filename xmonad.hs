@@ -148,7 +148,7 @@ myLogHook h =
 -- }}}
 
 -- Workspaces {{{
-myWorkspaces = ws $ ["TERM", "INET", "DEV", "ENT", "PLAY"]
+myWorkspaces = ws $ ["TERM", "INET", "DEV", "ENT", "PLAY", "PROD"]
   where
     ws l =
       [ "^ca(1,xdotool key super+" ++ show n ++ ")  " ++ ws ++ "  ^ca()"
@@ -185,6 +185,7 @@ myManageHook =
   , [ className =? c --> doShift (w !! 2) | c <- devApp ]
   , [ className =? c --> doShift (w !! 3) | c <- entApp ]
   , [ className =? c --> doShift (w !! 4) | c <- playApp ]
+  , [ className =? c --> doShift (w !! 5) | c <- prodApp ]
   , [ className =? c --> doFloat          | c <- floatingApp ]
   , [ className =? c --> doIgnore         | c <- ignoreApp ]
   , [ isDialog       --> doCenterFloat ]
@@ -203,6 +204,7 @@ myManageHook =
       ]
     entApp = ["MPlayer", "smplayer", "mpv", "Gimp"]
     playApp = ["player", "Genymotion"]
+    prodApp = ["MuPDF"]
     floatingApp = ["SecureCRT", "TeamViewer", "Xmessage"]
     ignoreApp = ["desktop", "desktop_window", "stalonetray", "trayer"]
 -- }}}
