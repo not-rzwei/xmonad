@@ -203,7 +203,7 @@ myManageHook =
       , "Code", "oni"
       ]
     entApp = ["MPlayer", "smplayer", "mpv", "Gimp"]
-    playApp = ["player", "Genymotion"]
+    playApp = ["player", "Genymotion Player"]
     prodApp = ["MuPDF"]
     floatingApp = ["SecureCRT", "TeamViewer", "Xmessage"]
     ignoreApp = ["desktop", "desktop_window", "stalonetray", "trayer"]
