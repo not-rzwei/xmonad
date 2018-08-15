@@ -174,7 +174,7 @@ myLayoutHook =
     webLayout = Full ||| Tall (1) (3/100) (1/2)
     standardLayout =
       smartBorders $
-      renamed [CutWordsLeft 2] $
+      renamed [CutWordsLeft 1] $
       smartSpacingWithEdge 8 $ layoutHook defaultConfig
 -- }}}
 
