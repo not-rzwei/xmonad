@@ -75,14 +75,14 @@ monitor n     = show(round(monitorSize * n))
 monitor' n    = round(monitorSize * n)
 
 ----- WHAT COLOR?
-bgColor       = "#3d4142"
-fgColor       = "#c3bfc0"
+bgColor       = "#B79288"
+fgColor       = "#F2EBEA"
+layoutColor   = "#AA3355"
 wsBgColor     = fgColor
 wsFgColor     = bgColor
 barBgColor    = bgColor
 barFgColor    = fgColor
-hintColor     = "#754e53"
-layoutColor   = "#14272e"
+hintColor     = layoutColor
 
 ---- Panel
 leftBarSize   = monitor 0.7
