@@ -260,14 +260,14 @@ myKeys =
       \ -w '" ++ w ++ "' \
       \ -h '" ++ h ++ "' \
       \ -x '" ++ x ++ "' \
-      \ -nb '" ++ nb ++ "' \
-      \ -sb '" ++ sb ++ "'"
+      \ -nf '" ++ fgColor ++ "' \
+      \ -sf '" ++ fgColor ++ "' \
+      \ -nb '" ++ bgColor ++ "' \
+      \ -sb '" ++ layoutColor ++ "'"
       where
         w = monitor 0.3
         x = show(monitor'(0.7) - 70)
         h = "26"
         fn = font
-        nb = bgColor
-        sb = layoutColor
     scratchPad = scratchpadSpawnActionTerminal term
 -- }}}
