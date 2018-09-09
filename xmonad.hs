@@ -219,12 +219,10 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
 
 -- Startup Hook {{{
 myStartupHook = do
-  spawnOnce "feh --bg-fill ~/.xmonad/background.png"
+  spawnOnce "feh --bg-fill $HOME/.xmonad/background.png"
   spawnOnce "xsetroot -cursor_name left_ptr"
   spawnOnce "setxkbmap -option 'caps:swapescape'"
-  spawnOnce "setxkbmap -option 'altwin:swap_lalt_lwin'"
-  spawnOnce "setxkbmap -option 'ctrl:rctrl_ralt'"
-  spawnOnce "xmodmap ~/.Xmodmap"
+  spawnOnce "setxkbmap -option 'altwin:swap_lalt_lwin'; xmodmap $HOME/.Xmodmap"
   spawnOnce "compton --config /dev/null -bGC \
             \ --focus-exclude \"class_g = 'Dmenu'\" \
             \ --inactive-dim 0.2 "
