@@ -167,9 +167,7 @@ myLayoutHook =
   where
     w = workspaces'
     termLayout =
-      renamed [CutWordsLeft 1] $
-      gaps [(L,30), (U,30), (R,30), (D,30)] $
-      withIM (6/11) (ClassName "URxvt") $
+      gaps [(L,50), (U,50), (R,50), (D,50)] $
       standardLayout
     webLayout = Full ||| Tall (1) (3/100) (1/2)
     standardLayout =
@@ -223,7 +221,10 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
 myStartupHook = do
   spawnOnce "feh --bg-fill ~/.xmonad/background.png"
   spawnOnce "xsetroot -cursor_name left_ptr"
-  spawnOnce "setxkbmap -option 'altwin:swap_alt_win'"
+  spawnOnce "setxkbmap -option 'caps:swapescape'"
+  spawnOnce "setxkbmap -option 'altwin:swap_lalt_lwin'"
+  spawnOnce "setxkbmap -option 'ctrl:rctrl_ralt'"
+  spawnOnce "xmodmap ~/.Xmodmap"
   spawnOnce "compton --config /dev/null -bGC \
             \ --focus-exclude \"class_g = 'Dmenu'\" \
             \ --inactive-dim 0.2 "
