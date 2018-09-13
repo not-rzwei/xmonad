@@ -78,7 +78,7 @@ monitor' n    = round(monitorSize * n)
 bgColor       = "#B79288"
 fgColor       = "#F2EBEA"
 layoutColor   = "#AA3355"
-wsBgColor     = fgColor
+wsBgColor     = "#f1f3f4"
 wsFgColor     = bgColor
 barBgColor    = bgColor
 barFgColor    = fgColor
@@ -221,8 +221,9 @@ manageScratchPad = scratchpadManageHook (W.RationalRect l t w h)
 myStartupHook = do
   spawnOnce "feh --bg-fill $HOME/.xmonad/background.png"
   spawnOnce "xsetroot -cursor_name left_ptr"
-  spawnOnce "setxkbmap -option 'caps:swapescape'"
-  spawnOnce "setxkbmap -option 'altwin:swap_lalt_lwin'; xmodmap $HOME/.Xmodmap"
+  spawnOnce "sleep 3 && setxkbmap -option 'caps:swapescape'"
+  spawnOnce "sleep 3 && setxkbmap -option 'altwin:swap_lalt_lwin'; "
+  spawnOnce "sleep 3 && xmodmap $HOME/.Xmodmap"
   spawnOnce "compton --config /dev/null -bGC \
             \ --focus-exclude \"class_g = 'Dmenu'\" \
             \ --inactive-dim 0.2 "
