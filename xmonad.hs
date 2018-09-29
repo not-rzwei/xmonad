@@ -64,6 +64,7 @@ term          = "urxvt"
 mouseFocus    = False
 workspaces'   = myWorkspaces
 keyboard      = myKeys
+browser       = "firefox"
 
 ----- Appearance
 bdrSize       = 0
@@ -194,7 +195,7 @@ myManageHook =
   where
     w = workspaces'
     isRole = stringProperty "WM_WINDOW_ROLE" =? "pop-up"
-    inetApp = ["Chromium"]
+    inetApp = ["Chromium", "Firefox"]
     devApp =
       [ "SecureCRT", "GNS3", "VirtualBox Manager"
       , "VirtualBox Machine", "jetbrains-studio"
@@ -234,7 +235,7 @@ myStartupHook = do
 -- Keymapping {{{
 -- /usr/include/X11/keysymdef.h
 myKeys =
-  [ ((m, xK_b), spawn "chromium")
+  [ ((m, xK_b), spawn browser)
   , ((m, xK_p), spawn dmenu)
   , ((m, xK_s), sendMessage ToggleStruts)
   , ((m, xK_BackSpace), focusUrgent)
