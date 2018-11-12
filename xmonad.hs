@@ -246,8 +246,8 @@ myKeys =
   , ((0, xF86XK_AudioLowerVolume), spawn "ponymix decrease 10")
   , ((0, xF86XK_AudioRaiseVolume), spawn "ponymix increase 10")
   , ((0, xF86XK_AudioMute), spawn "ponymix toggle")
-  , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -10")
-  , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +10")
+  , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -5")
+  , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +5")
   , ((0, xK_Print), spawn "maim -s | xclip -selection clipboard -t image/png")
   , ((s, xK_Print), spawn "maim | xclip -selection clipboard -t image/png")
   ]
